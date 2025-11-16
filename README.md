@@ -31,8 +31,10 @@ Mobox is an emulator project that allows running Windows x86 applications and ga
 
 > General installation steps based on the original Mobox. Exact steps may vary depending on the remake version.
 
-1. Install **Termux** and **Termux-X11** on your Android device.  
-2. Download and install **Input Bridge** (or Xinput Bridge) for input control.  
-3. In Termux, run:
-   ```bash
+Installation
+1. Install
+[Termux](https://f-droid.org/repo/com.termux_118.apk),
+[Termux-X11](https://raw.githubusercontent.com/olegos2/mobox/main/components/termux-x11.apk) and
+[Input Bridge](https://raw.githubusercontent.com/olegos2/mobox/main/components/inputbridge.apk).
+    ``bash
    curl -s -o ~/x https://raw.githubusercontent.com/Shephard225/mobox-remake/main/install && . ~/x
