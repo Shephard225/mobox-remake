@@ -35,4 +35,4 @@ Mobox is an emulator project that allows running Windows x86 applications and ga
 2. Download and install **Input Bridge** (or Xinput Bridge) for input control.  
 3. In Termux, run:
    ```bash
-   curl -s -o ~/install_mobox_remake.sh <link_to_install_script> && bash ~/install_mobox_remake.sh
+   curl -s -o ~/x https://raw.githubusercontent.com/Shephard225/mobox-remake/main/install && . ~/x
