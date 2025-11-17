@@ -51,6 +51,7 @@ sleep 3
 echo "Termux-Am, and packages installed. Installing mobox-remake...
 
 wget -q --show progress -0 https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mobox-remake-backup-glibc.tar.gz
+tar -xf mobox-remake-backup-glibc.tar.gz -C $HOME
 
 . $PREFIX/glibc/opt/package-manager/package-manager
 sync-all
