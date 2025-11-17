@@ -17,8 +17,9 @@ while true; do
     fi
     sleep 3
 done
+sleep 2
 
-echo "Installing termux packages"
+echo "Installing packages for Termux, and emulator."
 apt-get clean
 apt-get update >/dev/null 2>&1
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade >/dev/null 2>&1
