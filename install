@@ -93,3 +93,5 @@ tar -xf wine-9.3-vanilla-wow64.tar.xz -C $HOME
 wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-ge-custom-8.25.tar.xz
 tar -xf wine-ge-custom-8.25.tar.xz -C $HOME
 
+echo "Updating package-manager"
+mkdir -p $PREFIX/glibc/opt/package-manager/installed
