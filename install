@@ -1,36 +1,52 @@
 
-#!/bin/bash
-clear
-rm -f ~/x
+!/bin/bash
 
-sleep 3
+rm ~/x
 
-termux-setup-storage & sleep 4
+echo "Installing Termux-am..."
+pkg install termux-am -y &>/dev/null
+
+termux-setup-storage & sleep 4 &>/dev/null
 
 while true; do
     if [ -d ~/storage/shared ]; then
         break
+    else
+        echo "Storage permission denied"
     fi
     sleep 3
 done
 
-sleep 1
+echo "Installing packages for Termux..."
+apt-get clean
+apt-get update >/dev/null 2>&1
+apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade >/dev/null 2>&1
+pkg install x11-repo -y &>/dev/null
+pkg install pulseaudio -y &>/dev/null
+pkg install xwayland -y &>/dev/null
+pkg install wget -y &>/dev/null
+pkg install tsu -y &>/dev/null
+pkg install root-repo -y &>/dev/null
+pkg install patchelf -y &>/dev/null
+pkg install p7zip -y &>/dev/null
+pkg install xorg-xrandr -y &>/dev/null
+pkg install ncurses-utils -y &>/dev/null
+pkg install hashdeep -y &>/dev/null
+pkg install termux-x11-nightly -y &>/dev/null
 
 if [ -e $PREFIX/glibc ]; then
     echo -n "Removing previous glibc. Continue? (Y/n) "
     read i
-    if [[ "$i" = "Y" || "$i" = "y" ]]; then
+    if [ "$i" = "Y" ] || [ "$i" = "y" ]; then
         rm -rf $PREFIX/glibc
     else
-        exit 1
+        return 1
     fi
 fi
-
-sleep 1
-
 mkdir -p $HOME/mobox-remake
 cd $HOME/mobox-remake
-
+sleep 2
+echo "Installing mobox-remake..."
 wget -q --show-progress -O mobox-remake-backup-glibc.tar.gz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mobox-remake-backup-glibc.tar.gz
 tar -xf mobox-remake-backup-glibc.tar.gz -C $HOME/mobox-remake
 
