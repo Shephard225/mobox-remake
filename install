@@ -48,3 +48,7 @@ fi
 
 INSTALL_WOW64=0
 sleep 3
+echo "Termux-Am, and packages installed. Installing mobox-remake...
+
+wget --progress=bar:force https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mobox-remake-backup-glibc.tar.gz -O $HOME/mobox-remake-backup-glibc.tar.gz
+tar -xzf $HOME/mobox-remake-backup-glibc.tar.gz -C $HOME
