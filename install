@@ -68,9 +68,7 @@ tar -xf mangohud.tar.xz -C $HOME
 wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud2.tar.xz
 tar -xf mangohud2.tar.xz -C $HOME
 
-
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/realeases/download/emu-files/package-manager
-
+wget -q --show-progress -O $HOME/package-manager https://github.com/Shephard225/mobox-remake/releases/download/emu-files/package-manager
 
 wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/prefix-apps.tar.xz
 tar -xf prefix-apps.tar.xz -C $HOME
