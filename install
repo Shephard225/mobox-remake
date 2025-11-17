@@ -50,8 +50,7 @@ INSTALL_WOW64=0
 sleep 3
 echo "Termux-Am, and packages installed. Installing mobox-remake...
 
-wget -q --show-progress -O /data/data/com.termux/files/usr/mobox-remake-backup-glibc.tar.gz https://github.com/Shephard225/mobox-remake/releases/download/File/mobox-remake-backup-glibc.tar.gz
-
+wget -q --show-progress -O /data/data/com.termux/files/usr/mobox-remake-backup-glibc.tar.gz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mobox-remake-backup-glibc.tar.gz
 sleep 2
 echo -e "\e[33m[i] Installing Mobox-Remake...\e[0m"
 
