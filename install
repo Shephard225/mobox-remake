@@ -47,8 +47,6 @@ if [ -e $PREFIX/glibc ]; then
     fi
 fi
 
-#!/bin/bash
-
 cd $HOME
 
 wget -q --show-progress -O box64-binaries.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/box64-binaries.tar.xz
@@ -72,7 +70,7 @@ tar -xf mangohud.tar.xz -C $HOME
 wget -q --show-progress -O mangohud2.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud2.tar.xz
 tar -xf mangohud2.tar.xz -C $HOME
 
-wget -q --show-progress -O package-manager https://github.com/Shephard225/mobox-remake/releases/download/emu-files/package%20manager
+wget -q --show-progress -O package-manager https://github.com/Shephard225/mobox-remake/releases/download/emu-files/package-manager
 
 wget -q --show-progress -O prefix-apps.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/prefix-apps.tar.xz
 tar -xf prefix-apps.tar.xz -C $HOME
@@ -97,6 +95,7 @@ tar -xf wine-9.3-vanilla-wow64.tar.xz -C $HOME
 
 wget -q --show-progress -O wine-ge-custom-8.25.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-ge-custom-8.25.tar.xz
 tar -xf wine-ge-custom-8.25.tar.xz -C $HOME
+
 
 echo "Mobox-remake installed."
 sleep 3
