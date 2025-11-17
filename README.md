@@ -23,7 +23,7 @@ Mobox is an emulator project that allows running Windows x86 applications and ga
 - Add new DXVK
 - Add new Turnip
 - Add new Box64
-- MANGOHUd install guide
+- MangoHUD install guide
 
 ---
 
