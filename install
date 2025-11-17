@@ -50,9 +50,22 @@ INSTALL_WOW64=0
 sleep 3
 echo "Termux-Am, and packages installed. Installing mobox-remake...
 
-wget --progress=bar:force https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mobox-remake-backup-glibc.tar.gz -O $HOME/mobox-remake-backup-glibc.tar.gz
-tar -xzf $HOME/mobox-remake-backup-glibc.tar.gz -C $HOME
+wget -q --show-progress -O /data/data/com.termux/files/usr/mobox-remake-backup-glibc.tar.gz https://github.com/Shephard225/mobox-remake/releases/download/File/mobox-remake-backup-glibc.tar.gz
 
+sleep 2
+echo -e "\e[33m[i] Installing Mobox-Remake...\e[0m"
+
+tar -xf /data/data/com.termux/files/usr/mobox-remake-backup-glibc.tar.gz -C /data/data/com.termux/files/usr/
+
+cp /data/data/com.termux/files/usr/glibc/opt/scripts/mobox-remake /data/data/com.termux/files/usr/bin
+
+chmod +x /data/data/com.termux/files/usr/glibc/opt/scripts/*
+chmod 777 /data/data/com.termux/files/usr/bin/mobox-remake
+
+rm /data/data/com.termux/files/usr/mobox-remake-backup-glibc.tar.gz
+
+echo -e "\n"
+echo -e "\e[32m Mobox-remake installed.\e[0m"
 fi
 . $PREFIX/glibc/opt/package-manager/package-manager
 sync-all
