@@ -47,52 +47,59 @@ if [ -e $PREFIX/glibc ]; then
     fi
 fi
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/box64-binaries.tar.xz
+#!/bin/bash
+
+cd $HOME
+
+wget -q --show-progress -O box64-binaries.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/box64-binaries.tar.xz
 tar -xf box64-binaries.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/dxvk.tar.xz
+wget -q --show-progress -O dxvk.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/dxvk.tar.xz
 tar -xf dxvk.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/en-ru-locate.tar.xz
+wget -q --show-progress -O en-ru-locate.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/en-ru-locate.tar.xz
 tar -xf en-ru-locate.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/glibc-prefix.tar.xz
+wget -q --show-progress -O glibc-prefix.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/glibc-prefix.tar.xz
 tar -xf glibc-prefix.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/libudev.tar.xz
+wget -q --show-progress -O libudev.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/libudev.tar.xz
 tar -xf libudev.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud.tar.xz
+wget -q --show-progress -O mangohud.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud.tar.xz
 tar -xf mangohud.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud2.tar.xz
+wget -q --show-progress -O mangohud2.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud2.tar.xz
 tar -xf mangohud2.tar.xz -C $HOME
 
-wget -q --show-progress -O $HOME/package-manager https://github.com/Shephard225/mobox-remake/releases/download/emu-files/package-manager
+wget -q --show-progress -O package-manager https://github.com/Shephard225/mobox-remake/releases/download/emu-files/package%20manager
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/prefix-apps.tar.xz
+wget -q --show-progress -O prefix-apps.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/prefix-apps.tar.xz
 tar -xf prefix-apps.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/scripts.tar.xz
+wget -q --show-progress -O scripts.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/scripts.tar.xz
 tar -xf scripts.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/turnip.tar.xz
+wget -q --show-progress -O turnip.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/turnip.tar.xz
 tar -xf turnip.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-8.18-staging-wow64.tar.xz
+wget -q --show-progress -O wine-8.18-staging-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-8.18-staging-wow64.tar.xz
 tar -xf wine-8.18-staging-wow64.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.0-staging-wow64.tar.xz
+wget -q --show-progress -O wine-9.0-staging-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.0-staging-wow64.tar.xz
 tar -xf wine-9.0-staging-wow64.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.1-vanilla-wow64.tar.xz
+wget -q --show-progress -O wine-9.1-vanilla-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.1-vanilla-wow64.tar.xz
 tar -xf wine-9.1-vanilla-wow64.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.3-vanilla-wow64.tar.xz
+wget -q --show-progress -O wine-9.3-vanilla-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.3-vanilla-wow64.tar.xz
 tar -xf wine-9.3-vanilla-wow64.tar.xz -C $HOME
 
-wget -q --show-progress -O https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-ge-custom-8.25.tar.xz
+wget -q --show-progress -O wine-ge-custom-8.25.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-ge-custom-8.25.tar.xz
 tar -xf wine-ge-custom-8.25.tar.xz -C $HOME
+
+echo "Mobox-remake installed."
+sleep 3
 
 echo "Updating package-manager"
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
