@@ -1,5 +1,7 @@
 
 #!/bin/bash
+clear
+sleep 3
 
 rm ~/x
 
@@ -16,6 +18,7 @@ while true; do
     fi
     sleep 3
 done
+sleep 3
 
 echo "Installing packages for Termux..."
 apt-get clean
@@ -95,3 +98,16 @@ tar -xf wine-ge-custom-8.25.tar.xz -C $HOME
 
 echo "Updating package-manager"
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
+
+fi
+. $PREFIX/glibc/opt/package-manager/package-manager
+sync-all
+
+if [ "$INSTALL_WOW64" = "1" ]; then
+sync-package wine-9.3-vanilla-wow64
+else
+sync-package wine-ge-custom-8-25
+fi
+
+ln -sf $PREFIX/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
+echo "To start - type \"mobox-remake\""
