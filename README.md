@@ -20,10 +20,10 @@ Mobox is an emulator project that allows running Windows x86 applications and ga
 - I decided to continue the project, fix bugs, and add new features so the community can keep using and improving this emulator.  
 
 **Main goals:**  
-- Fix bugs from the original version  
-- Optimize performance  
-- Add new features (configurations, UI improvements, dynarec settings, etc.)  
-- Improve documentation and user support
+- Add new DXVK
+- Add new Turnip
+- Add new Box64
+- MANGOHUd install guide
 
 ---
 
