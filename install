@@ -104,14 +104,13 @@ sleep 3
 echo "Updating package-manager"
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
 
-fi
 . $PREFIX/glibc/opt/package-manager/package-manager
 sync-all
 
 if [ "$INSTALL_WOW64" = "1" ]; then
-sync-package wine-9.3-vanilla-wow64
+    sync-package wine-9.3-vanilla-wow64
 else
-sync-package wine-ge-custom-8-25
+    sync-package wine-ge-custom-8-25
 fi
 
 ln -sf $PREFIX/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
