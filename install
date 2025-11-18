@@ -57,17 +57,19 @@ mkdir -p $PREFIX/glibc/opt/package-manager/installed
 echo "PRIVATE_TOKEN=glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr
 PROJECT_ID=76144938">$PREFIX/glibc/opt/package-manager/token
 
+
 . $PREFIX/glibc/opt/package-manager/token
 if ! wget-git-q "package-manager" "$PREFIX/glibc/opt/package-manager/package-manager"; then
     echo "Download failed"
     return 1
 fi
+
 . $PREFIX/glibc/opt/package-manager/package-manager
 sync-all
 
 sync-package wine-9.3-vanilla-wow64
 
- chmod +x $PREFIX/glibc/opt/scripts/scripts/mobox-remake
+chmod +x $PREFIX/glibc/opt/scripts/glibc/opt/scripts/mobox-remake
 
-ln -sf $PREFIX/glibc/opt/scripts/scripts/mobox-remake $PREFIX/bin/mobox-remake
+ln -sf $PREFIX/glibc/opt/scripts/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
 echo "To start - type \"mobox-remake\""
