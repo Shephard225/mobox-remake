@@ -1,8 +1,11 @@
+
 #!/bin/bash
 clear
 sleep 3
 
-echo "Installing termux-am"
+rm -f ~/x
+
+echo "Installing Termux-am..."
 pkg install termux-am -y &>/dev/null
 yes | pkg install wget
 clear
@@ -18,11 +21,11 @@ while true; do
     sleep 3
 done
 
-sleep 3
-echo "Installing base Termux-packages..."
+echo "Installing Termux packages..."
 apt-get clean
 apt-get update >/dev/null 2>&1
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade >/dev/null 2>&1
+
 pkg install x11-repo -y &>/dev/null
 pkg install pulseaudio -y &>/dev/null
 pkg install xwayland -y &>/dev/null
@@ -42,32 +45,36 @@ if [ -e $PREFIX/glibc ]; then
     if [ "$i" = "Y" ] || [ "$i" = "y" ]; then
         rm -rf $PREFIX/glibc
     else
-        return 1
+        echo "Aborted"
+        exit 1
     fi
 fi
 
-sleep 2
 echo "Installing Mobox-remake..."
 
 function wget-git-q {
-    wget -q --retry-connrefused --tries=0 --header "PRIVATE-TOKEN: glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr" \
-    "https://gitlab.com/api/v4/projects/76144938/repository/files/$1/raw?ref=main" -O $2
+    wget -q --retry-connrefused --tries=0 --header "PRIVATE-TOKEN: $PRIVATE_TOKEN" \
+    "https://gitlab.com/api/v4/projects/$PROJECT_ID/repository/files/$1/raw?ref=main" -O $2
     return $?
 }
 
-echo "Updating package manager"
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
+
 echo "PRIVATE_TOKEN=glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr PROJECT_ID=76144938" > $PREFIX/glibc/opt/package-manager/token
 . $PREFIX/glibc/opt/package-manager/token
 
 if ! wget-git-q "package-manager" "$PREFIX/glibc/opt/package-manager/package-manager"; then
     echo "Download failed"
-    return 1
+    exit 1
 fi
 
 . $PREFIX/glibc/opt/package-manager/package-manager
 sync-all
 sync-package wine-9.3-vanilla-wow64
 
-ln -sf $PREFIX/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
-echo "To start - type \"mobox-remake\""
+if [ -f "$PREFIX/glibc/opt/scripts/mobox-remake" ]; then
+    ln -sf "$PREFIX/glibc/opt/scripts/mobox-remake" "$PREFIX/bin/mobox-remake"
+    echo "To start - type 'mobox-remake'"
+else
+    echo "Error: mobox-remake not found in scripts folder"
+fi
