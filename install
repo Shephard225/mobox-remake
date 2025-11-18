@@ -67,7 +67,7 @@ sync-all
 
 sync-package wine-9.3-vanilla-wow64
 
-chmod +x $PREFIX/glibc/opt/scripts/mobox-remake
+ chmod +x $PREFIX/glibc/opt/scripts/scripts/mobox-remake
 
-ln -sf $PREFIX/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
+ln -sf $PREFIX/glibc/opt/scripts/scripts/mobox-remake $PREFIX/bin/mobox-remake
 echo "To start - type \"mobox-remake\""
