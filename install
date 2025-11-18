@@ -3,7 +3,7 @@ rm ~/x
 
 sleep 3
 
-echo "Installing termux-am"
+echo "Installing Termux-am"
 pkg install termux-am -y &>/dev/null
 yes | pkg install wget; clear
 termux-setup-storage & sleep 4 &>/dev/null
@@ -17,7 +17,7 @@ while true; do
     sleep 3
 done
 
-echo "Installing termux packages"
+echo "Installing packages for Termux"
 apt-get clean
 apt-get update >/dev/null 2>&1
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade >/dev/null 2>&1
@@ -44,7 +44,7 @@ if [ -e $PREFIX/glibc ]; then
     fi
 fi
 
-echo "Installing mobox-remake"
+echo "Installing mobox-remake..."
 
 function wget-git-q {
     wget -q --retry-connrefused --tries=0 --header "PRIVATE-TOKEN: $PRIVATE_TOKEN" "https://gitlab.com/api/v4/projects/$PROJECT_ID/repository/files/$1/raw?ref=main" -O $2
