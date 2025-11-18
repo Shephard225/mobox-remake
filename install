@@ -1,9 +1,9 @@
+
 #!/bin/bash
+
 rm ~/x
 
-sleep 3
-
-echo "Installing Termux-am"
+echo "Installing termux-am"
 pkg install termux-am -y &>/dev/null
 yes | pkg install wget; clear
 termux-setup-storage & sleep 4 &>/dev/null
@@ -17,7 +17,7 @@ while true; do
     sleep 3
 done
 
-echo "Installing packages for Termux"
+echo "Installing packages for Termux..."
 apt-get clean
 apt-get update >/dev/null 2>&1
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade >/dev/null 2>&1
@@ -43,8 +43,10 @@ if [ -e $PREFIX/glibc ]; then
         return 1
     fi
 fi
-
-echo "Installing mobox-remake..."
+sleep 3
+echo "Packages for Termux installed."
+sleep 2
+echo "Installing mobox-remake"
 
 function wget-git-q {
     wget -q --retry-connrefused --tries=0 --header "PRIVATE-TOKEN: $PRIVATE_TOKEN" "https://gitlab.com/api/v4/projects/$PROJECT_ID/repository/files/$1/raw?ref=main" -O $2
@@ -55,21 +57,18 @@ echo "Updating package manager"
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
 
 echo "PRIVATE_TOKEN=glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr
-PROJECT_ID=76144938">$PREFIX/glibc/opt/package-manager/token
-
+PROJECT_ID=76144938" > $PREFIX/glibc/opt/package-manager/token
 
 . $PREFIX/glibc/opt/package-manager/token
 if ! wget-git-q "package-manager" "$PREFIX/glibc/opt/package-manager/package-manager"; then
     echo "Download failed"
     return 1
 fi
-
 . $PREFIX/glibc/opt/package-manager/package-manager
 sync-all
 
 sync-package wine-9.3-vanilla-wow64
 
-chmod +x $PREFIX/glibc/opt/scripts/glibc/opt/scripts/mobox-remake
-
-ln -sf $PREFIX/glibc/opt/scripts/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
+chmod +x $PREFIX/glibc/opt/scripts/mobox-remake
+ln -sf $PREFIX/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
 echo "To start - type \"mobox-remake\""
