@@ -1,12 +1,11 @@
-
 #!/bin/bash
 clear
 sleep 3
 
-rm ~/x
-
-echo "Installing Termux-am..."
+echo "Installing termux-am"
 pkg install termux-am -y &>/dev/null
+yes | pkg install wget
+clear
 
 termux-setup-storage & sleep 4 &>/dev/null
 
@@ -18,9 +17,9 @@ while true; do
     fi
     sleep 3
 done
-sleep 3
 
-echo "Installing packages for Termux..."
+sleep 3
+echo "Installing base Termux-packages..."
 apt-get clean
 apt-get update >/dev/null 2>&1
 apt-get -y --with-new-pkgs -o Dpkg::Options::="--force-confdef" upgrade >/dev/null 2>&1
@@ -47,70 +46,28 @@ if [ -e $PREFIX/glibc ]; then
     fi
 fi
 
-cd $HOME
+sleep 2
+echo "Installing Mobox-remake..."
 
-wget -q --show-progress -O box64-binaries.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/box64-binaries.tar.xz
-tar -xf box64-binaries.tar.xz -C $HOME
+function wget-git-q {
+    wget -q --retry-connrefused --tries=0 --header "PRIVATE-TOKEN: glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr" \
+    "https://gitlab.com/api/v4/projects/76144938/repository/files/$1/raw?ref=main" -O $2
+    return $?
+}
 
-wget -q --show-progress -O dxvk.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/dxvk.tar.xz
-tar -xf dxvk.tar.xz -C $HOME
-
-wget -q --show-progress -O en-ru-locate.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/en-ru-locate.tar.xz
-tar -xf en-ru-locate.tar.xz -C $HOME
-
-wget -q --show-progress -O glibc-prefix.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/glibc-prefix.tar.xz
-tar -xf glibc-prefix.tar.xz -C $HOME
-
-wget -q --show-progress -O libudev.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/libudev.tar.xz
-tar -xf libudev.tar.xz -C $HOME
-
-wget -q --show-progress -O mangohud.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud.tar.xz
-tar -xf mangohud.tar.xz -C $HOME
-
-wget -q --show-progress -O mangohud2.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/mangohud2.tar.xz
-tar -xf mangohud2.tar.xz -C $HOME
-
-wget -q --show-progress -O package-manager https://github.com/Shephard225/mobox-remake/releases/download/emu-files/package-manager
-
-wget -q --show-progress -O prefix-apps.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/prefix-apps.tar.xz
-tar -xf prefix-apps.tar.xz -C $HOME
-
-wget -q --show-progress -O scripts.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/scripts.tar.xz
-tar -xf scripts.tar.xz -C $HOME
-
-wget -q --show-progress -O turnip.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/turnip.tar.xz
-tar -xf turnip.tar.xz -C $HOME
-
-wget -q --show-progress -O wine-8.18-staging-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-8.18-staging-wow64.tar.xz
-tar -xf wine-8.18-staging-wow64.tar.xz -C $HOME
-
-wget -q --show-progress -O wine-9.0-staging-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.0-staging-wow64.tar.xz
-tar -xf wine-9.0-staging-wow64.tar.xz -C $HOME
-
-wget -q --show-progress -O wine-9.1-vanilla-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.1-vanilla-wow64.tar.xz
-tar -xf wine-9.1-vanilla-wow64.tar.xz -C $HOME
-
-wget -q --show-progress -O wine-9.3-vanilla-wow64.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-9.3-vanilla-wow64.tar.xz
-tar -xf wine-9.3-vanilla-wow64.tar.xz -C $HOME
-
-wget -q --show-progress -O wine-ge-custom-8.25.tar.xz https://github.com/Shephard225/mobox-remake/releases/download/emu-files/wine-ge-custom-8.25.tar.xz
-tar -xf wine-ge-custom-8.25.tar.xz -C $HOME
-
-
-echo "Mobox-remake installed."
-sleep 3
-
-echo "Updating package-manager"
+echo "Updating package manager"
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
+echo "PRIVATE_TOKEN=glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr PROJECT_ID=76144938" > $PREFIX/glibc/opt/package-manager/token
+. $PREFIX/glibc/opt/package-manager/token
+
+if ! wget-git-q "package-manager" "$PREFIX/glibc/opt/package-manager/package-manager"; then
+    echo "Download failed"
+    return 1
+fi
 
 . $PREFIX/glibc/opt/package-manager/package-manager
 sync-all
-
-if [ "$INSTALL_WOW64" = "1" ]; then
-    sync-package wine-9.3-vanilla-wow64
-else
-    sync-package wine-ge-custom-8-25
-fi
+sync-package wine-9.3-vanilla-wow64
 
 ln -sf $PREFIX/glibc/opt/scripts/mobox-remake $PREFIX/bin/mobox-remake
 echo "To start - type \"mobox-remake\""
