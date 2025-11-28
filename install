@@ -3,7 +3,8 @@
 
 rm ~/x
 
-echo "Installing termux-am"
+echo "Installing termux-am..."
+clear
 pkg install termux-am -y &>/dev/null
 yes | pkg install wget; clear
 termux-setup-storage & sleep 4 &>/dev/null
@@ -53,7 +54,7 @@ function wget-git-q {
     return $?
 }
 
-echo "Updating package manager"
+echo "Updating package-manager"
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
 
 echo "PRIVATE_TOKEN=glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr
