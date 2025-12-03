@@ -36,6 +36,22 @@ pkg install xorg-xrandr -y &>/dev/null
 pkg install ncurses-utils -y &>/dev/null
 pkg install hashdeep -y &>/dev/null
 pkg install termux-x11-nightly -y &>/dev/null
+clear
+
+wget --header "PRIVATE-TOKEN: $(grep PRIVATE_TOKEN $PREFIX/glibc/opt/package-manager/token | cut -d= -f2)" \
+"https://gitlab.com/api/v4/projects/76144938/repository/files/wine-9.3-vanilla-wow64.tar.xz/raw?ref=main" \
+-O /storage/emulated/0/Download/test.tar.xz
+
+cd $PREFIX/glibc/opt/package-manager/temp || mkdir -p $PREFIX/glibc/opt/package-manager/temp && cd $PREFIX/glibc/opt/package-manager/temp
+
+tar -xJf /storage/emulated/0/Download/test.tar.xz
+
+mv glibc/wine-9.3-vanilla-wow64 $PREFIX/glibc/
+
+cd $PREFIX
+tar -cJf /storage/emulated/0/Download/wine-9.3-vanilla-wow64.tar.xz glibc/wine-9.3-vanilla-wow64
+
+echo "Wine 9.3 vanilla WOW64 installed and backup created in /storage/emulated/0/Download/"
 
 if [ -e $PREFIX/glibc ]; then
     echo -n "Removing previous glibc. Continue? (Y/n) "
