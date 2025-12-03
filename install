@@ -6,7 +6,6 @@ clear
 sleep 1
 echo "Installing termux-am..."
 sleep 3
-clear
 pkg install termux-am -y &>/dev/null
 yes | pkg install wget; clear
 termux-setup-storage & sleep 4 &>/dev/null
@@ -20,6 +19,7 @@ while true; do
     sleep 3
 done
 
+clear
 echo "Installing packages for Termux..."
 apt-get clean
 apt-get update >/dev/null 2>&1
