@@ -46,15 +46,16 @@ if [ -e $PREFIX/glibc ]; then
 fi
 sleep 3
 echo "Packages for Termux installed."
-sleep 2
-echo "Installing mobox-remake"
+clear
+sleep 1
+echo "Installing mobox-remake..."
 
 function wget-git-q {
     wget -q --retry-connrefused --tries=0 --header "PRIVATE-TOKEN: $PRIVATE_TOKEN" "https://gitlab.com/api/v4/projects/$PROJECT_ID/repository/files/$1/raw?ref=main" -O $2
     return $?
 }
 
-echo "Updating package-manager"
+echo "Updating package-manager..."
 mkdir -p $PREFIX/glibc/opt/package-manager/installed
 
 echo "PRIVATE_TOKEN=glpat-nybXy782yrn2GFJQrwU8iW86MQp1Oml2NnI3Cw.01.1216l75cr
